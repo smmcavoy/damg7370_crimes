@@ -51,3 +51,21 @@ create streaming table if not exists damg7370_crimes.dim_location(
     cross_street string,
     last_updated timestamp
 );
+
+drop table if exists damg7370_crimes.fact_crime_incident;
+create streaming table if not exists damg7370_crimes.fact_crime_incident(
+    crime_incident_key bigint generated always as identity (start with 1 increment by 1),
+    dr_no int,
+    date_key int,
+    time_occ int,
+    location_key bigint,
+    status_key bigint,
+    crime_code_key bigint,
+    weapon_key bigint,
+    vict_age int,
+    vict_sex string,
+    vict_descent string,
+    lat double,
+    lon double,
+    created_at timestamp
+);
